@@ -1,13 +1,13 @@
 # Buzzword poem generator
 
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/delimitry/buzzword_poem_generator
-/blob/master/LICENSE)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/delimitry/buzzword_poem_generator/blob/master/LICENSE)
 
 Description:
 ------------
 
-Inspired by this twit: https://twitter.com/lenadroid/status/957054198872293378
+Buzzword poem generator is a tool in pure Python for generation of the poems from the buzzwords.
 
+This project was inspired by this twit: https://twitter.com/lenadroid/status/957054198872293378
 
 ### Examples:
 
