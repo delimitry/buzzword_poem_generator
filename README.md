@@ -1,5 +1,7 @@
 # Buzzword poem generator
 
+[![Build Status](https://travis-ci.org/delimitry/buzzword_poem_generator.svg?branch=master)](https://travis-ci.org/delimitry/buzzword_poem_generator)
+[![Coverage Status](https://coveralls.io/repos/github/delimitry/buzzword_poem_generator/badge.svg?branch=master)](https://coveralls.io/github/delimitry/buzzword_poem_generator?branch=master)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/delimitry/buzzword_poem_generator/blob/master/LICENSE)
 
 Description:
