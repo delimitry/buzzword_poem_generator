@@ -307,7 +307,7 @@ def get_syllables_combinations(syllables_words, syllables_num, use_cache=True):
                     combinations.append(fv)
         if use_cache:
             with open('compositions_{}_{}.dat'.format(keys_hash, syllables_num), 'wb') as f:
-                f.write(pickle.dumps(combinations))
+                pickle.dump(combinations, f, protocol=2)
     return combinations
 
 
