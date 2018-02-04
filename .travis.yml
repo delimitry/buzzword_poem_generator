@@ -1,0 +1,11 @@
+language: python
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+install:
+  - pip install coveralls
+script:
+  - coverage run --source=buzzword_poem_generator tests.py
+after_success:
+  - coveralls
