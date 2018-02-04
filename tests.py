@@ -218,18 +218,20 @@ class TestBuzzwordPoemGenerator(unittest.TestCase):
         words_syllables = {
             'One': 1,
             'Seven': 2,
-            'Eleven': 3,
-            'Fourteen': 2,
+            'Seventeen': 3,
+            'Fifty': 2,
         }
-        rhymes = [
-            {'Seven', 'Eleven',},
-            {'Fourteen', 'Seventeen',},
-        ]
+        rhymes = []
         syllables_words = invert_map(words_syllables)
 
-        # only one poem can be generated
+        # several poems can be generated
         poem = fill_poem(words_syllables, syllables_words, rhymes, [(1, 3,), (2, 2),], 'AB')
-        self.assertEqual(poem, [['One', 'Eleven'], ['Seven', 'Fourteen']])
+        self.assertIn(poem, (
+            [['One', 'Seventeen'], ['Seven', 'Fifty']],
+            [['One', 'Seventeen'], ['Fifty', 'Seven']],
+            [['Seven', 'Fifty'], ['One', 'Seventeen']],
+            [['Fifty', 'Seven'], ['One', 'Seventeen']],
+        ))
 
         # The number of lines (2) != rhyme scheme size (3)
         with self.assertRaises(Exception):
@@ -290,7 +292,7 @@ class TestBuzzwordPoemGenerator(unittest.TestCase):
         self.assertEqual(invert_map(invert_map({})), {})
         self.assertNotEqual(invert_map({}), {'a': 'b'})
         self.assertEqual(invert_map({'a': 123}), {123: ['a']})
-        self.assertEqual(invert_map({'a': 1, 'b': 1, 'c': 2}), {1: ['a', 'b'], 2: ['c']})
+        self.assertEqual(sorted(invert_map({'a': 1, 'b': 1, 'c': 2})[1]), sorted(['a', 'b']))
 
 
 if __name__ == '__main__':
