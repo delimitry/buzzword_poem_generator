@@ -262,6 +262,13 @@ class TestBuzzwordPoemGenerator(unittest.TestCase):
         combinations = get_syllables_combinations(syllables_words, 3, use_cache=False)
         self.assertEqual(sorted(combinations), sorted([[1, 1, 1], [1, 2], [2, 1], [3]]))
 
+        # one combination for number of syllables = 1, use_cache=True
+        combinations = get_syllables_combinations(syllables_words, 1, use_cache=True)
+        self.assertEqual(combinations, [[1]])
+        # one combination for number of syllables = 1, use_cache=True again to check load from cache
+        combinations = get_syllables_combinations(syllables_words, 1, use_cache=True)
+        self.assertEqual(combinations, [[1]])
+
     def test_generate_poem(self):
         """Test generate_poem function"""
         generate_poem('A', [1], 1, False)
