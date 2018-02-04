@@ -4,7 +4,7 @@
 import unittest
 from buzzword_poem_generator import (
     invert_map, find_poem_base, get_rhyme_words_from_syllables_num,
-    get_rhyme_words_groups, fill_poem, is_rhyme, get_syllables_combinations,
+    get_rhyme_words_groups, fill_poem, is_rhyme, get_syllables_combinations, generate_poem,
 )
 
 
@@ -88,13 +88,15 @@ class TestBuzzwordPoemGenerator(unittest.TestCase):
         ]
         syllables_words = invert_map(words_syllables)
 
+        # no rhymes for []
+        rhyme_words = get_rhyme_words_from_syllables_num(words_syllables, syllables_words, rhymes, [])
+        self.assertEqual(rhyme_words, [])
         # no rhymes for [1,] syllable, because there are no words with 1 syllable
         rhyme_words = get_rhyme_words_from_syllables_num(words_syllables, syllables_words, rhymes, [1])
         self.assertEqual(rhyme_words, [])
         # for [2] syllable, there is only ['Seven'] word, therefore rhyme
         rhyme_words = get_rhyme_words_from_syllables_num(words_syllables, syllables_words, rhymes, [2])
         self.assertEqual(rhyme_words, ['Seven'])
-
         # no rhymes for [1, 2] syllables
         rhyme_words = get_rhyme_words_from_syllables_num(words_syllables, syllables_words, rhymes, [1, 2])
         self.assertEqual(rhyme_words, [])
@@ -257,6 +259,17 @@ class TestBuzzwordPoemGenerator(unittest.TestCase):
         # one combination for number of syllables = 3
         combinations = get_syllables_combinations(syllables_words, 3, use_cache=False)
         self.assertEqual(sorted(combinations), sorted([[1, 1, 1], [1, 2], [2, 1], [3]]))
+
+    def test_generate_poem(self):
+        """Test generate_poem function"""
+        generate_poem('A', [1], 1, False)
+        # poem can't be generated error
+        generate_poem('ABCDE', [4, 4, 4, 4, 4], 4, False)
+        # must print errors
+        generate_poem('A', [1], 0, False)
+        generate_poem('A', [1], 3, False)
+        generate_poem('ABC', [1], 0, False)
+        generate_poem('A', [99999], 0, False)
 
     def test_is_rhyme(self):
         """Test is_rhyme function"""
