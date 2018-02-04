@@ -73,7 +73,7 @@ WORDS_SYLLABLES = {
     'Hazelcast': 3,
     'Mongo': 2,
     'Redis': 2,
-    'Couchbase': 3,
+    'Couchbase': 2,
     'Postgres': 2,
     'Memcached': 2,
     'Cassandra': 3,
