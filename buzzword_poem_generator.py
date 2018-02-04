@@ -162,7 +162,7 @@ def get_rhyme_words_from_syllables_num(words_syllables, syllables_words, rhymes,
     if not syllables_num:
         return []
     if not used_rhyme_words:
-        used_rhyme_words = []
+        used_rhyme_words = set()
 
     # if length of syllables_num is 1, return random word that has no rhyme
     if len(syllables_num) == 1:
@@ -237,6 +237,7 @@ def get_rhyme_words_groups(words_syllables, syllables_words, rhymes, syllables_n
         rhyme_words = get_rhyme_words_from_syllables_num(
             words_syllables, syllables_words, rhymes, group, used_rhyme_words=used_rhyme_words)
         if not rhyme_words:
+            # if no rhyme for group found - return an empty list (to indicate an error)
             return []
         used_rhyme_words |= set(rhyme_words)
         result.append(rhyme_words)
