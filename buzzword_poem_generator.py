@@ -84,16 +84,16 @@ WORDS_SYLLABLES = {
 }
 
 RHYMES = [
-    {'Rust', 'Raft', 'React',},
-    {'Spark', 'Erlang', 'Splunk',},
-    {'Go', 'TensorFlow', 'Mongo',},
-    {'Terraform', 'Storm', 'Swarm',},
-    {'Scala', 'Impala',},
-    {'Postgres', 'HBase', 'Couchbase',},
-    {'Redis', 'Travis', 'Kinesis',},
-    {'Hadoop', 'Sqoop',},
-    {'RabbitMQ', 'ActiveMQ',},
-    {'Celery', 'Sentry',},
+    {'Rust', 'Raft', 'React', },
+    {'Spark', 'Erlang', 'Splunk', },
+    {'Go', 'TensorFlow', 'Mongo', },
+    {'Terraform', 'Storm', 'Swarm', },
+    {'Scala', 'Impala', },
+    {'Postgres', 'HBase', 'Couchbase', },
+    {'Redis', 'Travis', 'Kinesis', },
+    {'Hadoop', 'Sqoop', },
+    {'RabbitMQ', 'ActiveMQ', },
+    {'Celery', 'Sentry', },
 ]
 
 WORDS_WITH_RHYME = set(sum([list(rl) for rl in RHYMES], []))
@@ -145,8 +145,7 @@ def find_poem_base(syllables_words, syl_combinations, syllables_in_lines, min_wo
             for syllables, words_count in cur_used.items():
                 total_available[syllables] -= words_count
             found_lines.append(combination)
-            if len(found_lines) >= len(syllables_in_lines):
-                break
+            break
     # return empty lines if not found all required lines
     if len(found_lines) < len(syllables_in_lines):
         return []
