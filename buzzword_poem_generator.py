@@ -125,9 +125,6 @@ def find_poem_base(syllables_words, syl_combinations, syllables_in_lines, min_wo
 
     # find a combination for each required number of syllables in line
     for syllables_in_line in syllables_in_lines:
-        # stop if found all the lines
-        if len(found_lines) >= len(syllables_in_lines):
-            break
         for combination in syl_combinations[syllables_in_line]:
             if len(combination) < min_words_in_line:
                 continue
