@@ -9,7 +9,7 @@ Description:
 
 Buzzword poem generator is a tool in pure Python for generation of the poems from the buzzwords.
 
-This project was inspired by this twit: https://twitter.com/lenadroid/status/957054198872293378
+This project was inspired by this tweet: https://twitter.com/lenadroid/status/957054198872293378
 
 Usage:
 ------
