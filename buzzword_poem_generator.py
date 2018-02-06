@@ -17,71 +17,64 @@ from collections import Counter
 
 MAX_TRIES = 100
 
-WORDS_SYLLABLES = {
-    'Go': 1,
-    'Rust': 1,
-    'Python': 2,
-    'Haskell': 2,
-    'Erlang': 2,
-    'Kotlin': 2,
-    'Scala': 2,
-
-    'Raft': 1,
-    'Paxos': 2,
-
-    'React': 2,
-    'TensorFlow': 3,
-    'Keras': 2,
-
-    'Swarm': 1,
-    'Kubernetes': 4,
-    'Mesos': 2,
-
-    'Docker': 2,
-    'Vagrant': 2,
-    'Hadoop': 2,
-    'Zookeeper': 3,
-    'Terraform': 3,
-    'Vault': 1,
-    'Consul': 2,
-    'Nomad': 2,
-
-    'Ansible': 3,
-    'Puppet': 2,
-    'Chef': 1,
-
-    'Hive': 1,
-    'Spark': 1,
-    'Impala': 3,
-    'Flink': 1,
-    'Storm': 1,
-    'Celery': 3,
-    'Lambda': 2,
-
-    'Jenkins': 2,
-    'Travis': 2,
-
-    'Splunk': 1,
-    'Sentry': 2,
-
-    'Kafka': 2,
-    'Kinesis': 3,
-    'Logstash': 2,
-    'RabbitMQ': 4,
-    'Sqoop': 1,
-    'ActiveMQ': 4,
-
-    'Hazelcast': 3,
-    'Mongo': 2,
-    'Redis': 2,
-    'Couchbase': 2,
-    'Postgres': 2,
-    'Memcached': 2,
-    'Cassandra': 3,
-    'Redshift': 2,
-    'Riak': 2,
-    'HBase': 2,
+WORDS_METRICAL_FEET = {
+    # / - ictus (stressed syllable), x - nonictus (unstressed syllable)
+    'Go': ['/'],
+    'Rust': ['/'],
+    'Python': ['/', 'x'],
+    'Haskell': ['/', 'x'],
+    'Erlang': ['/', 'x'],
+    'Kotlin': ['/', 'x'],
+    'Scala': ['/', 'x'],
+    'Raft': ['/'],
+    'Paxos': ['/', 'x'],
+    'React': ['x', '/'],
+    'TensorFlow': ['/', 'x', '/'],
+    'Keras': ['/', 'x'],
+    'Swarm': ['/'],
+    'Kubernetes': ['/', 'x', '/', 'x'],
+    'Mesos': ['/', 'x'],
+    'Docker': ['/', 'x'],
+    'Vagrant': ['/', 'x'],
+    'Hadoop': ['x', '/'],
+    'Zookeeper': ['/', '/', 'x'],  # two stressed?
+    'Terraform': ['/', 'x', '/'],
+    'Vault': ['/'],
+    'Consul': ['/', 'x'],
+    'Nomad': ['/', 'x'],
+    'Ansible': ['/', 'x', 'x'],
+    'Puppet': ['/', 'x'],
+    'Chef': ['/'],
+    'Hive': ['/'],
+    'Spark': ['/'],
+    'Impala': ['x', '/', 'x'],
+    'Flink': ['/'],
+    'Storm': ['/'],
+    'Celery': ['/', 'x', 'x'],
+    'Lambda': ['/', 'x'],
+    'Jenkins': ['/', 'x'],
+    'Travis': ['/', 'x'],
+    'Splunk': ['/'],
+    'Sentry': ['/', 'x'],
+    'Kafka': ['/', 'x'],
+    'Kinesis': ['x', '/', 'x'],
+    'Logstash': ['/', '/'],  # two stressed?
+    'RabbitMQ': ['x', '/', 'x', '/'],
+    'Sqoop': ['/'],
+    'ActiveMQ': ['x', '/', 'x', '/'],
+    'Hazelcast': ['/', 'x', '/'],
+    'Mongo': ['/', 'x'],
+    'Redis': ['/', 'x'],
+    'Couchbase': ['/', 'x'],
+    'Postgres': ['/', 'x'],
+    'Memcached': ['/', '/'],  # two stressed?
+    'Cassandra': ['x', '/', 'x'],
+    'Redshift': ['/', 'x'],
+    'Riak': ['x', '/'],
+    'HBase': ['/', 'x'],
 }
+
+WORDS_SYLLABLES = {k: len(v) for k, v in WORDS_METRICAL_FEET.items()}
 
 RHYMES = [
     {'Rust', 'Raft', 'React', },
